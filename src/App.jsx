@@ -12,6 +12,7 @@ function App() {
     <>
       <Navegation/>
       <ItemListConteiner greeting = {"Bienvenido a Tienda de Cerámica"} />
+      <h1></h1>
     </>
   )
 }
