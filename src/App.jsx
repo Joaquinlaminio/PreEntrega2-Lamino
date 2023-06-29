@@ -1,18 +1,27 @@
+import './App.css'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Navegation from './components/Navegation/Navegation'
 import ItemListConteiner from './components/ItemListConteiner/ItemListConteiner'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   
 
   return (
     <>
+
+    <BrowserRouter>
+
       <Navegation/>
-      <ItemListConteiner greeting = {"Bienvenido a Tienda de Cerámica"} />
-      <h1></h1>
+      <Routes>
+        <route path='/' element={<ItemListConteiner/>} />
+        <route path='/categoria/:idCategoria' element={<ItemListConteiner/>} />
+        <route path='/item/:idItem' element={<ItemDetailConteiner/>} />
+      </Routes>
+    </BrowserRouter>
+
     </>
   )
 }
