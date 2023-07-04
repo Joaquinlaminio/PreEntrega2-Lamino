@@ -15,11 +15,11 @@ function App() {
     <BrowserRouter>
 
       <Navegation/>
-      <Routes>
-        <route path='/' element={<ItemListConteiner/>} />
-        <route path='/categoria/:idCategoria' element={<ItemListConteiner/>} />
-        <route path='/item/:idItem' element={<ItemDetailConteiner/>} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<ItemListConteiner/>} />
+          <Route path='/categoria/:idCategoria' element={<ItemListConteiner/>} />
+          <Route path='/item/:idItem' element={<ItemDetailConteiner/>} />
+        </Routes>
     </BrowserRouter>
 
     </>

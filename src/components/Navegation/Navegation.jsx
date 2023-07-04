@@ -5,9 +5,9 @@ import './Navegation.css'
 const Navegation = () => {
   return (
     <header>
-      <link to={"/"} >
+      <Link to={"/"} >
         <h1>Coclé</h1>
-      </link>
+      </Link>
 
         <nav>
             <ul>
