@@ -1,6 +1,6 @@
 import CartWidget from '../CartWidget/CartWidget'
-import { Link, NavLink } from 'react-router-dom'
 import './Navegation.css'
+import { Link, NavLink } from 'react-router-dom'
 
 const Navegation = () => {
   return (
@@ -12,10 +12,10 @@ const Navegation = () => {
         <nav>
             <ul>
                 <li>
-                  <NavLink to={'/categoria/2'}>Cocina</NavLink>
+                  <NavLink to={"/categoria/2"}>Cocina</NavLink>
                 </li>
                 <li>
-                <NavLink to={'/categoria/3'}>Jardin</NavLink>
+                <NavLink to={"/categoria/3"}>Jardin</NavLink>
                 </li>
                 
             </ul>
