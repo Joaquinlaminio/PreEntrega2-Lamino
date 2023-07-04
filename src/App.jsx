@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Navegation from './components/Navegation/Navegation'
 import ItemListConteiner from './components/ItemListConteiner/ItemListConteiner'
+import ItemDetailConteiner from './components/ItemDetailConteiner/ItemDetailConteiner'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
