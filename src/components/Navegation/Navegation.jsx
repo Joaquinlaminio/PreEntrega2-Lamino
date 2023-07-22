@@ -15,7 +15,10 @@ const Navegation = () => {
                   <NavLink to={"/categoria/2"}>Cocina</NavLink>
                 </li>
                 <li>
-                <NavLink to={"/categoria/3"}>Jardin</NavLink>
+                  <NavLink to={"/categoria/3"}>Jardin</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/ContactForm"}>Contacto</NavLink>
                 </li>
                 
             </ul>
