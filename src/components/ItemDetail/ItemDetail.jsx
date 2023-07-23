@@ -4,7 +4,7 @@ import ItemCount from '../ItemCount/ItemCount'
 import './ItemDetail.css'
 import { CarritoContext } from '../../context/CarritoContext'
 
-const ItemDetail = ({ id, nombre, precio, img, stock }) => {
+const ItemDetail = ({ id, nombre, precio, img, stock, descripcion }) => {
 
     const [agregarCantidad, setAgregarCantidad] = useState(0);
 
@@ -21,11 +21,13 @@ const ItemDetail = ({ id, nombre, precio, img, stock }) => {
             <h2>Nombre: {nombre} </h2>
             <h3>Precio: {precio} </h3>
             <h3>ID: {id} </h3>
+            <h3> {descripcion} </h3>
             <img src={img} alt={nombre} />
-            
+            <button>
             {
                 agregarCantidad > 0 ? (<Link to="/cart"> Terminar Compra</Link>) : (<ItemCount inicial={1} stock={stock} funcionAgregar={manejadorCantidad}/>)
             }
+            </button>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 .cardProducto {
-    background-color: #bcbd8b;
+    background-color: grey;
     border-radius: 10px;
     width: 15rem;
     padding: 1rem;
@@ -11,6 +11,7 @@
 
 .imgProducto {
     width: 150px;
+    height: 150px;
     object-fit: contain;
 }
 

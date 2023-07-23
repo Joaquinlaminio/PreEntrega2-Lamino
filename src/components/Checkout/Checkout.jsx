@@ -2,9 +2,10 @@ import { useState, useContext } from "react";
 import {CarritoContext} from '../../context/CarritoContext';
 import { db } from "../../services/config";
 import { collection, addDoc, updateDoc, doc, getDoc } from "firebase/firestore";
+import './Checkout.css';
 
 const Checkout = () => {
-    const {carrito, vaciarCarrito, cantidadTotal} = useContext(CarritoContext);
+    const {carrito, vaciarCarrito, cantidadTotal, total} = useContext(CarritoContext);
     const [nombre, setNombre] = useState("");
     const [apellido, setApellido] = useState("");
     const [telefono, setTelefono] = useState("");
@@ -72,59 +73,63 @@ const Checkout = () => {
     }
 
     return (
-    <div>
-        <h2>Checkout</h2>
-        <form onSubmit={manejadorFormulario}>
-            {carrito.map(producto => (
-                <div key={producto.id} >
-                    <p>
-                        {producto.item.nombre} x {producto.cantidad}
-                    </p>
-                    <p>Precio $ {producto.item.precio} </p>
-                    <hr />
-                </div>
-            ))}
-            <hr />
-
+        <div>
+            <h2>Checkout</h2>
+            <form onSubmit={manejadorFormulario} className="formulario">
+                {carrito.map(producto => (
+                    <div key={producto.id}>
+                        <p>
+                            {producto.item.nombre} x {producto.cantidad}
+                        </p>
+                        <p>Precio $ {producto.item.precio} </p>
+                        <hr />
+                    </div>   
+                    
+                ))}
+                <hr />
                 <div>
+                    <p>Total: $ {total} </p>
+                </div>
+
+                <div className="form-group">
                     <label htmlFor="nombre"> Nombre </label>
-                    <input type="text" value={nombre} onChange={(e)=>setNombre(e.target.value)} />
+                    <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
                 </div>
 
-                <div>
+                <div className="form-group">
                     <label htmlFor=""> Apellido </label>
-                    <input type="text" value={apellido} onChange={(e)=>setApellido(e.target.value)} />
+                    <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
                 </div>
 
-                <div>
+                <div className="form-group">
                     <label htmlFor=""> Telefono </label>
-                    <input type="text" value={telefono} onChange={(e)=>setTelefono(e.target.value)} />
+                    <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
                 </div>
 
-                <div>
+                <div className="form-group">
                     <label htmlFor=""> Email </label>
-                    <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
 
-                <div>
+                <div className="form-group">
                     <label htmlFor=""> Email Confirmación </label>
-                    <input type="email" value={emailConfirmacion} onChange={(e)=>setEmailConfirmacion(e.target.value)} />
+                    <input type="email" value={emailConfirmacion} onChange={(e) => setEmailConfirmacion(e.target.value)} />
                 </div>
 
                 {
-                    error && <p style={{color:"red"}}> {error} </p>
+                    error && <p style={{ color: "red" }}> {error} </p>
                 }
 
                 <button type="submit"> Finalizar Compra </button>
-        </form>
-        {
-            orderId && (
-                <strong>¡Gracias por tu compra! Tu número de orden es {orderId} </strong>
-            )
-        }
+            </form>
+            {
+                orderId && (
+                    <strong className="ordenId">¡Gracias por tu compra! Tu número de orden es {orderId} </strong>
+                )
+            }
 
 
-    </div>
+        </div>
     )
 }
 

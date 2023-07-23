@@ -1,25 +1,39 @@
-import {useState, createContext} from "react";
+//1) Voy a importar el hook useState y createContext que me permite crear un contexto que va a almacenar toda la lógica de mi carrillo de compras. 
 
-export const CarritoContext = createContext ({
+import { useState, createContext } from "react";
+
+//2) Creamos el nuevo contexto. 
+
+export const CarritoContext = createContext({
     carrito: [],
     total: 0,
-    cantidadTotal: 0,
+    cantidadTodal: 0
 })
 
-export const CarritoProvider = ({children}) => {
-    const [carrito, setCarrito] = useState ([]);
-    const [total, setTotal] = useState (0);
-    const [cantidadTotal, setCantidadTotal] = useState (0);
+//3) Creamos un componente llamado "CarritoProvider". 
+//También lo pueden encontrar como "proveedor de contextos". 
 
+export const CarritoProvider = ({children}) => {
+    //4) Creamos un estado local "carrito, total y cantidad total" con el hook useState.
+    const [carrito, setCarrito] = useState([]);
+    const [total, setTotal] = useState(0);
+    const [cantidadTotal, setCantidadTotal] = useState(0);
+
+    //No se olviden de esto: verifiquen el carrito por consola. 
     console.log(carrito);
+
+    //5) Agregamos algunos métodos al proveedor de contexto para manipular el carrito de compras: 
+
+    //Función agregar al carrito: 
 
     const agregarProducto = (item, cantidad) => {
         const productoExistente = carrito.find(prod => prod.item.id === item.id);
 
-        if (!productoExistente) {
+        if(!productoExistente) {
             setCarrito(prev => [...prev, {item, cantidad}]);
-            setCantidadTotal (prev => prev + cantidad);
-            setTotal (prev => prev + (item.precio * cantidad));
+            //La sintaxis: prev => [...prev, {item, cantidad}] la uso para crear un nuevo array a partir del estado anterior del carrito (prev) y agregar un nuevo objeto que representa el nuevo producto. 
+            setCantidadTotal(prev => prev + cantidad);
+            setTotal(prev => prev + (item.precio * cantidad));
         } else {
             const carritoActualizado = carrito.map ( prod => {
                 if(prod.item.id === item.id) {
